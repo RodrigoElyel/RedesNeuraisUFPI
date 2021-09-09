@@ -16,13 +16,14 @@ const tangente = (u, b) => {
 }
 
 const calcularU = (entradas, pesos, limiar, beta, qtdEntrada, funcao) => {
-    if (qtdEntrada === 1) {
-        var u = ((entradas[0] * pesos[0])) - limiar
-    } else if (qtdEntrada === 2) {
-        var u = ((entradas[0] * pesos[0]) + (entradas[1] * pesos[1])) - limiar
-    } else if (qtdEntrada === 3) {
-        var u = ((entradas[0] * pesos[0]) + (entradas[1] * pesos[1]) + (entradas[2] * pesos[2])) - limiar
+
+    var arm = 0
+
+    for (var i = 0; i < qtdEntrada; i++) {
+        arm += (entradas[i] * pesos[i])
     }
+
+    var u = arm - limiar
 
     u = u.toFixed(2)
     if (funcao === 'degrau') {
@@ -58,7 +59,6 @@ const questao6 = (entrada) => {
     var neuronioC = calcularU(entrada, pesoC, limiarC, 0, 2, 'degrau')
     console.log('Neurônio Y:')
     var neuronioY = calcularU([neuronioA, neuronioB, neuronioC], pesoY, limiarY, 0, 3, 'degrau')
-
 }
 
 const questao11 = (entrada) => {
@@ -172,9 +172,9 @@ const questao16 = (entrada) => {
 
 
 questao6([0, 0])
-questao6([0, 1])
-questao6([1, 0])
-questao6([1, 1])
+// questao6([0, 1])
+// questao6([1, 0])
+// questao6([1, 1])
 // questao11([0, 0, 0])
 // questao11([0, 0, 1])
 // questao11([0, 1, 0])
