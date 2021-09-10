@@ -3,21 +3,18 @@
 
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src='./atividade2_parte2.js'></script>
     <script type="text/javascript">
+        var dados = questao1()
+        console.log(dados[1][2])
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Entrada', 'Saída'],
-                ['2004', 1000],
-                ['2005', 1170],
-                ['2006', 660],
-                ['2007', 1030]
-            ]);
+            var data = google.visualization.arrayToDataTable(dados);
 
             var options = {
-                title: 'Company Performance',
+                title: 'Questão 1',
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };
